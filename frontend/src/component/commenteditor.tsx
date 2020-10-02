@@ -1,6 +1,6 @@
 import { CommentModel } from 'common';
 import React from 'react';
-import { Nav } from './nav';
+import { CommentCreationForm } from './commentcreationform';
 
 interface Props { }
 interface State {
@@ -16,7 +16,7 @@ export class CommentEditor extends React.Component<Props, State> {
     }
 
     public async componentDidMount() {
-        const comments = (await (await fetch('/api/book')).json() as any[]).map(CommentModel.fromJSON);
+        const comments = (await (await fetch('/api/comment')).json() as any[]).map(CommentModel.fromJSON);
         this.setState({ comments });
     }
 
@@ -25,12 +25,11 @@ export class CommentEditor extends React.Component<Props, State> {
         if (!comments) { return 'Chargement...'; }
 
         return <>
-            <Nav />
-            {/* {comments.map(comment => <div key={comments.bookId}>{comment.title} {this.getPageCount(comment)}</div>)}
-            <CommentCreationForm addComment={comment => {
-                comments.push(comment);
-                this.setState({ comments });
-            }} /> */}
+            {comments.map(comment => <div key={comment.commentId}>
+                Commentaire ici: {comment.contenu}{comment.editor}{comment.datePub.toString()}
+
+                <CommentCreationForm comment={comment} />
+            </div>)}
         </>;
     }
 

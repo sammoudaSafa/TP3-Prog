@@ -1,10 +1,9 @@
 import { CommentModel } from 'common';
 import React, { FormEvent } from 'react';
 
-interface Props { addComment(commentModel: CommentModel): void; }
+interface Props { comment: CommentModel; }
 interface State {
-    title?: string;
-    pageCount?: number | null;
+    contenu?: string;
 }
 
 export class CommentCreationForm extends React.Component<Props, State> {
@@ -16,35 +15,35 @@ export class CommentCreationForm extends React.Component<Props, State> {
     }
 
     public render() {
-        const { pageCount, title } = this.state;
+        // const { pageCount, title } = this.state;
 
         return <>
-            <form onSubmit={this.createBook}>
-                <label>Titre<input type='text' required={true} value={title ?? ''} onChange={e => {
-                    this.setState({ title: e.target.value });
+            <form onSubmit={this.addComment}>
+                <label>Commentaire:<input type='text' value={this.state.contenu ?? ''} required={true} onChange={e => {
+                    this.setState({ contenu: e.target.value });
                 }} /></label>
-                <label>Nombre de pages<input type='number' value={pageCount ?? ''} onChange={e => {
+                {/* <label>Nombre de pages<input type='number' value={pageCount ?? ''} onChange={e => {
                     const newPageCount = parseInt(e.target.value);
                     this.setState({ pageCount: isNaN(newPageCount) ? null : newPageCount });
-                }} /></label>
-                <input type='submit' value='Créer' />
+                }} /></label> */}
+                <input type='submit' value='Poster' />
             </form>
         </>;
     }
 
-    private createBook = async (event: FormEvent<HTMLFormElement>) => {
+    private addComment = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        const body = { title: this.state.title, pageCount: this.state.pageCount };
+        // const body = { contenu: this.state.contenu };
 
-        const createdBook = await (await fetch('/api/book', {
-            method: 'POST',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(body),
-            credentials: 'include'
-        })).json();
+        // const createdComment = await (await fetch('/api/book', {
+        //     method: 'POST',
+        //     headers: {
+        //         'content-type': 'application/json'
+        //     },
+        //     body: JSON.stringify(body),
+        //     credentials: 'include'
+        // })).json();
 
-        this.props.addComment(createdBook);
+        // this.props.addComment(createdComment);
     };
 }
