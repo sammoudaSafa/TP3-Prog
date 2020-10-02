@@ -1,13 +1,13 @@
-import { BookModel } from 'common';
+import { CommentModel } from 'common';
 import React, { FormEvent } from 'react';
 
-interface Props { addBook(bookModel: BookModel): void; }
+interface Props { addComment(commentModel: CommentModel): void; }
 interface State {
     title?: string;
     pageCount?: number | null;
 }
 
-export class BookCreationForm extends React.Component<Props, State> {
+export class CommentCreationForm extends React.Component<Props, State> {
 
     constructor(props: Props) {
         super(props);
@@ -45,6 +45,6 @@ export class BookCreationForm extends React.Component<Props, State> {
             credentials: 'include'
         })).json();
 
-        this.props.addBook(createdBook);
+        this.props.addComment(createdBook);
     };
 }

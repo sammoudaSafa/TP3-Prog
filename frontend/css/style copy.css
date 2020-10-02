@@ -1,0 +1,60 @@
+ul {
+    list-style-type: none;
+}
+
+.done {
+    text-decoration: line-through;
+}
+*{
+    margin:auto;
+    padding:auto;
+}
+.game{
+    min-height: 100vh;
+    display: flex;
+    background-color: cornsilk;
+    flex-wrap:wrap;
+    justify-content: space-around;
+    align-items: center;
+}
+.personnage{
+    width:220px;
+    height: 220px;
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid black;
+}
+.rejouer{
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  margin-top: 15px;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+.navbar{
+  height: 100px;
+  margin-bottom: 20 px;
+  list-style: none;
+  background-color: blue;}
+.navmain{
+    width: 80%;
+    margin: auto;
+}
+ul{
+    width: 70%;
+    float: right;
+    padding:10px;
+    text-align: right;
+}
+ul a {
+    text-decoration: none;
+    margin: 0 15px;
+    color: #ffffff;
+}

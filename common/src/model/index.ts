@@ -1,2 +1,2 @@
-export * from './bookmodel';
+export * from './commentmodel';
 export * from './usermodel';
